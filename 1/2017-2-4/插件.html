@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>插件</title>
+  <style>
+  #wrap div{width:100px;height:100px;border:1px solid #000;display:none;}
+  .active{background:red;}
+  </style>
+  <script src="jquery-1.11.1.js"></script>
+  <script>
+  $(function(){
+
+  $('#wrap').wraps({
+    heads:['体育','娱乐','军事','财经','漫画','头条'],
+    bodys : ['1111111a','2222222b','3333333c','1111111d','2222222e','3333333f'],
+    events:'mouseover'
+  });
+
+});
+  (function($){
+    var defaults={
+    heads : ['1','2','3'],
+    bodys : ['1111111','2222222','3333333'],
+    events : 'click'
+  };
+
+     var settings={};
+     var $parent=null;
+     function fnTab(options)
+      {
+       $parent = this;
+        settings = $.extend(settings , defaults , options);
+
+        create();
+        bind();
+      }
+      function create()
+      {
+        for(var i=0;i<settings.heads.length;i++)
+        {
+          var $input = $('<input type="button" value="'+ settings.heads[i] +'">');
+      if(i==0){
+        $input.attr('class','active');
+      }
+      $parent.append( $input );
+        }
+
+        for(var i=0;i<settings.bodys.length;i++)
+        {
+           var $div = $('<div>'+ settings.bodys[i] +'</div>');
+      if(i==0){
+        $div.css('display','block');
+      }
+      $parent.append( $div );
+        }
+
+      }
+      function bind()
+      {
+        $parent.find('input').on(settings.events,function(){
+
+      $parent.find('input').attr('class','');
+      $(this).attr('class','active');
+      $parent.find('div').css('display','none');
+      $parent.find('div').eq( $(this).index() ).css('display','block');
+        });
+      }
+     $.fn.extend({
+   wraps : fnTab
+  });
+ })(jQuery);
+  </script>
+</head>
+<body>
+<div id="wrap">
+<!--<input class="active" type="button" value="1"/>
+<input type="button" value="2"/>
+<input type="button" value="3"/>
+<div style="display:block">11111</div>
+<div>22222</div>
+<div>33333</div>-->
+</div>
+</body>
+</html>

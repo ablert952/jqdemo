@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>自定义事件操作</title>
+  <style>
+  img{width:100px;height:100px;display:block;}
+  </style>
+  <script src="jquery-1.11.1.js"></script>
+  <script>
+  $(function(){
+    $('img').on('zoomIn',function(){
+      $(this).css('width',600);
+    })
+    $('img').on('zoomOut',function(){
+      $(this).css('width',50);
+    })
+    $('img').trigger('zoomIn');
+
+  })
+  </script>
+</head>
+<body>
+<img src="img/1.jpg" alt=""/>
+</body>
+</html>

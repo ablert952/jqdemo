@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>弹窗</title>
+  <style>
+  *{margin:0;padding:0;}
+  #login{width:300px;height:300px;border:1px solid #000;position:absolute;display:none;}
+  #login h3{height:30px;line-height:30px;background:#ccc;}
+  #login h3 span{float:right;line-height:30px;}
+  #login input{height:30px;line-height:30px;display:block;}
+  </style>
+  <script src="jquery-1.11.1.js"></script>
+  <script>
+  $(function(){
+    var $t=$(window).scrollTop();
+    var $left=0;
+    var $top=0;
+    change();
+    $(window).scroll(change);
+    $('#btn').on('click',function(){
+      $('#login').css('display','block');
+    })
+    $('#close').on('click',function(){
+      $('#login').css('display','none');
+    })
+    function change()
+    {
+      $t=$(window).scrollTop();
+      $left=($(window).outerWidth()-$('#login').outerWidth())/2;
+      $top=($(window).outerHeight()-$('#login').outerHeight())/2;
+      $('#login').css('left',$left);
+      $('#login').css('top',$top+$t);
+
+    }
+
+  })
+  </script>
+</head>
+<body style="height:1000px;">
+ <input type="button" id="btn" value="登录"/>
+ <div id="login">
+  <h3><span id="close">X</span></h3>
+  账号:<input type="text"/>
+  密码: <input type="password"/>
+ </div>
+</body>
+</html>

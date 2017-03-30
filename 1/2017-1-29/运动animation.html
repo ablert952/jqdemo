@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>测试</title>
+  <script src="jquery-1.11.1.js"></script>
+  <script>
+  $(function(){
+     $('input').click(function(){
+        $('div').stop().animate({num:null},
+          {
+            duration:500,
+            easing:'linear',
+            complete:function()
+            {
+              //alert(1);
+            },
+            step:function(a,b)
+            {
+              //console.log(b.pos);
+              $('div').html(parseInt(44646815658*b.pos))
+            }
+          });
+
+     })
+   })
+
+  </script>
+  <style>
+  div{width:100px;height:100px;background:red;}
+  </style>
+</head>
+<body>
+  <input type="button" value="点击"/><br/>
+  <div></div>
+</body>
+</html>

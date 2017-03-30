@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>点击交替</title>
+  <style>
+  #wrap{width:600px;height:300px;margin:50px auto;}
+  #listLeft{width:200px;height:200px;border:1px solid #000;float:left;}
+  li{cursor:pointer;}
+  #btns{width:100px;height:200px;position:relative;float:left;}
+  #btns input{width:30px;height:30px;position:absolute;top:50%;}
+  #btns .right{left:0;margin-top:-15px;}
+  #btns .left{right:0;margin-top:-15px;}
+  #listReft{width:200px;height:200px;border:1px solid #000;float:left;}
+  .active{background:red;}
+  </style>
+  <script src="jquery-1.11.1.js"></script>
+  <script>
+   $(function(){
+    var $listReft=$('#listReft');
+    var $listLeft=$('#listLeft');
+    var $LeftLi=$('#listLeft').find('li');
+    var $RightLi=$('#listReft').find('li');
+    var $right=$('.right');
+    var $left=$('.left');
+    $LeftLi.click(function()
+    {
+      $(this).each(function(i,elem)
+      {
+        $(elem).toggleClass('active');
+      })
+    })
+    $RightLi.click(function()
+    {
+       $(this).each(function(i,elem)
+      {
+        $(elem).toggleClass('active');
+      })
+    })
+    $right.click(function(){
+      leftTab();
+    })
+    $left.click(function(){
+      rightTab();
+    })
+
+    function leftTab()
+    {
+            $('#listLeft').find('li').each(function(i,elem)
+        {
+          if($(this).hasClass('active'))
+          {
+            $(this).removeClass();
+            $('#listReft').append($(this));
+
+          }
+        });
+    }
+    function rightTab()
+    {
+        $('#listReft').find('li').each(function(i,elem)
+        {
+          if($(this).hasClass('active'))
+          {
+            $(this).removeClass();
+            $('#listLeft').append($(this));
+
+          }
+        });
+    }
+   })
+  </script>
+</head>
+<body>
+<div id="wrap">
+ <ul id="listLeft">
+ <li>1111</li>
+ <li>2222</li>
+ <li>3333</li>
+ <li>4444</li>
+ <li>5555</li>
+</ul>
+<div id="btns">
+ <input type="button" value="right" class="right"/>
+<input type="button" value="left" class="left"/>
+</div>
+<ul id="listReft">
+ <li>aaaa</li>
+ <li>bbbbb</li>
+ <li>cccc</li>
+ <li>ddddd</li>
+ <li>eeeee</li>
+</ul>
+</div>
+</body>
+</html>

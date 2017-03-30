@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>评分功能</title>
+  <style>
+  #list{width:270px;height:50px;list-style:none;margin:50px auto;}
+  #list li{width:50px;height:50px;margin-right:2px;background:red;float:left;border-radius:50px;}
+  </style>
+  <script src="jquery-1.11.1.js"></script>
+  <script>
+  $(function(){
+   var $li=$('#list').find('li');
+   var oBff=true;
+   $li.mouseover(function(){
+
+    if(oBff)
+    {
+      var $index=$(this).index();
+      $li.each(function(i,elem){
+        if(i<=$index)
+        {
+          $(this).css('background','blue');
+        }else
+        {
+           $(this).css('background','red');
+        }
+     })
+    }
+   }).mouseout(function(){
+
+    if(oBff)
+    {
+       $('li').css('background','red');
+    }
+
+   })
+  $('li').click(function()
+  {
+     oBff=false;
+  })
+  oBff!=oBff;
+  })
+  </script>
+</head>
+<body>
+<ul id="list">
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+</body>
+</html>
